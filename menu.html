@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      font-family: sans-serif;
+      color: #fff;
+    }
+
+    /* Sidebar Menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0; /* Starts as open */
+      width: 240px;
+      height: 100%;
+      background: #2e2e2e;
+      padding: 64px 20px 24px;
+      box-sizing: border-box;
+      transition: left 0.25s ease;
+      z-index: 1001;
+    }
+    .sidebar a {
+      display: block;
+      color: #ADD8E6;
+      font-size: 20px;
+      text-decoration: none;
+      margin-bottom: 25px;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar" id="sidebar" aria-label="Main menu">
+    <a href="drive-video-viewer.html">Guide Videos (1xbet နဲ့ loboki မှ Bonus နဲ့ Promotion များအကြောင်း)</a>
+    <a href="footballlive.html">Football Live (ဘောပွဲကြည့်ရန်)</a>
+    <a href="#">Live Score (Goal Score ကြည့်ရန်)</a>
+    <a href="#">Giveaway (အပတ်စဉ် လက်‌ဆောင်)</a>
+    <a href="#">Contact (ဆက်သွယ်ဆော့ကစားရန်)</a>
+  </nav>
+
+  <div class="overlay" id="overlay" onclick="window.history.back()" aria-hidden="true"></div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    // Show the menu and overlay on page load
+    window.onload = function() {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    };
+    
+    // This allows the back button to work properly for closing the menu
+    window.addEventListener('popstate', (event) => {
+      if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
